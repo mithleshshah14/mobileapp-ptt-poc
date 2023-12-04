@@ -14,6 +14,8 @@ import com.nike.mobileapppttpoc.model.UserChannel;
 import com.nike.mobileapppttpoc.repository.ChannelRepository;
 import com.nike.mobileapppttpoc.repository.UserChannelRepository;
 import com.nike.mobileapppttpoc.repository.UserRepository;
+import com.notnoop.apns.APNS;
+import com.notnoop.apns.ApnsService;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -103,19 +105,13 @@ public class PTTService {
     payload.setChannelUuid(channelUuid);
     payload.setUserName(byId.get().getName());
 
-    ApnsClient service = getApns();
+    ApnsService service = getApnsService();
 
-    final ApnsPayloadBuilder payloadBuilder = new SimpleApnsPayloadBuilder();
-    payloadBuilder.setAlertBody(payload.toString());
-
-    final String notifPayload = payloadBuilder.build();
-
+    String stringPayload = APNS.newPayload().alertTitle("AudioNotif").alertBody(payload.toString()).build();
     List<UserChannel> allByChannelId = userChannelRepository.findAllByChannelId(channelUuid);
 
     for (UserChannel userChannel : allByChannelId) {
-      SimpleApnsPushNotification pushNotification = new SimpleApnsPushNotification(userChannel.getPttToken(),
-          "com.nike.pushToTalk.voip-ptt", notifPayload);
-      service.sendNotification(pushNotification);
+      service.push(userChannel.getPttToken(),stringPayload);
     }
 
   }
@@ -126,7 +122,7 @@ public class PTTService {
     return users;
   }
 
-  public void sendOneToOneNotification(int id1, int id2, String message) {
+/*  public void sendOneToOneNotification(int id1, int id2, String message) {
     Optional<User> userbyId1 = userRepository.findById(id1);
     Optional<User> userbyId2 = userRepository.findById(id2);
     Optional<UserChannel> userChannelbyId = userChannelRepository.findById(id1);
@@ -148,6 +144,25 @@ public class PTTService {
         "com.nike.pushToTalk.voip-ptt", notifPayload);
     service.sendNotification(pushNotification);
 
+  }*/
+
+  public void sendOneToOneNotification(int id1, int id2, String message) {
+    Optional<User> userbyId1 = userRepository.findById(id1);
+    Optional<User> userbyId2 = userRepository.findById(id2);
+    Optional<UserChannel> userChannelbyId = userChannelRepository.findById(id1);
+
+    NotificationPayload payload = new NotificationPayload();
+    payload.setMessage(message);
+    payload.setChannelName(channelRepository.findByUuid(userChannelbyId.get().getChannelId()).getChannelName());
+    payload.setChannelUuid(userChannelbyId.get().getChannelId());
+    payload.setUserName(userbyId1.get().getName());
+
+    ApnsService service = getApnsService();
+
+    String stringPayload = APNS.newPayload().alertTitle("OnetoOneNotif").alertBody(payload.toString()).build();
+    String token = userbyId2.get().getDeviceToken();
+    service.push(token,stringPayload);
+
   }
 
   public ApnsClient getApns() {
@@ -161,5 +176,11 @@ public class PTTService {
       throw new RuntimeException(e);
     }
     return apnsClient;
+  }
+
+  public ApnsService getApnsService() {
+    return APNS.newService()
+        .withCert("src/main/resources/AthleteCommunication-Dev.p12","Nike1234!")
+        .withSandboxDestination().build();
   }
 }

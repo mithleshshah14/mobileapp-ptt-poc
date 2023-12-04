@@ -1,0 +1,15 @@
+
+A
+java:S1452$"&Remove usage of generic wildcard type.(®ÿÁñúÿÿÿÿ
+V
+java:S4684+"@Replace this persistent entity with a simple POJO or DTO object.(Þùûƒ
+<
+java:S1452+"&Remove usage of generic wildcard type.(Þùûƒ
+[
+java:S46845"@Replace this persistent entity with a simple POJO or DTO object.(Á¦äüÿÿÿÿ
+A
+java:S14525"&Remove usage of generic wildcard type.(Á¦äüÿÿÿÿ
+[
+java:S4684?"@Replace this persistent entity with a simple POJO or DTO object.(ªžÚ†øÿÿÿÿ
+l
+java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅþÿÿÿÿ

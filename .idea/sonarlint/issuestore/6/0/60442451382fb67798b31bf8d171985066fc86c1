@@ -1,21 +1,19 @@
 
-h	java:S112¿"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8 îóÓÃ1
+h	java:S112×"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íìØÃ1
 {
-java:S1488€"]Immediately return this expression instead of assigning it to the temporary variable "users".(ïÆ»8¡îóÓÃ1
+java:S1488„"]Immediately return this expression instead of assigning it to the temporary variable "users".(ïÆ»8ğìØÃ1
+p
+java:S3655œ"RCall "userbyId2.isPresent()" or "!userbyId2.isEmpty()" before accessing the value.(–Å½©8ÙÉ¥ØÃ1
 |
-java:S3655‹"^Call "userChannelbyId.isPresent()" or "!userChannelbyId.isEmpty()" before accessing the value.(Í¸àª8ÉîóÓÃ1
+java:S3655"^Call "userChannelbyId.isPresent()" or "!userChannelbyId.isEmpty()" before accessing the value.(Í¸àª8ØÉ¥ØÃ1
 u
-java:S3655–"RCall "userbyId2.isPresent()" or "!userbyId2.isEmpty()" before accessing the value.(Ö³¹’øÿÿÿÿ8ÉîóÓÃ1
-u
-java:S3655"RCall "userbyId1.isPresent()" or "!userbyId1.isEmpty()" before accessing the value.(²“™ºüÿÿÿÿ8ÉîóÓÃ1
-X	java:S125"<This block of commented-out lines of code should be removed.(Æ°’Ï8ÊîóÓÃ1
+java:S3655‘"RCall "userbyId1.isPresent()" or "!userbyId1.isEmpty()" before accessing the value.(²“™ºüÿÿÿÿ8ÙÉ¥ØÃ1
+X	java:S125"<This block of commented-out lines of code should be removed.(Æ°’Ï8…íØÃ1
 H
-java:S1075]"&Remove this hard-coded path-delimiter.(·ùˆ¬şÿÿÿÿ8ÜîóÓÃ1
-Y	java:S125œ"<This block of commented-out lines of code should be removed.(·á„é8éîóÓÃ1
-M	java:S106°"+Replace this use of System.out by a logger.(ØÒª¸ıÿÿÿÿ8êîóÓÃ1
-M	java:S106±"+Replace this use of System.out by a logger.(ƒ£¹üÿÿÿÿ8êîóÓÃ1
+java:S1075a"&Remove this hard-coded path-delimiter.(·ùˆ¬şÿÿÿÿ8‘íØÃ1
+J
+java:S1602¨",Remove useless curly braces around statement(´ÚÏ¨8œíØÃ1
+Y	java:S125´"<This block of commented-out lines of code should be removed.(·á„é8íØÃ1
 Z
-java:S1874±"7Remove this use of "isAlpnSupported"; it is deprecated.(ƒ£¹üÿÿÿÿ8ëîóÓÃ1
-M	java:S106´"+Replace this use of System.out by a logger.(Å‚¦ßûÿÿÿÿ8ëîóÓÃ1
-H	java:S106µ"+Replace this use of System.out by a logger.(ùÚŸä8ìîóÓÃ1
-Y	java:S125Ä"<This block of commented-out lines of code should be removed.(ŸôÛ8õîóÓÃ1
+java:S1874É"7Remove this use of "isAlpnSupported"; it is deprecated.(ƒ£¹üÿÿÿÿ8íØÃ1
+Y	java:S125Ü"<This block of commented-out lines of code should be removed.(ŸôÛ8¤íØÃ1

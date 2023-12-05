@@ -2,9 +2,12 @@ package com.nike.mobileapppttpoc.service;
 
 import com.eatthepath.pushy.apns.ApnsClient;
 import com.eatthepath.pushy.apns.ApnsClientBuilder;
+import com.eatthepath.pushy.apns.PushNotificationResponse;
 import com.eatthepath.pushy.apns.util.ApnsPayloadBuilder;
 import com.eatthepath.pushy.apns.util.SimpleApnsPayloadBuilder;
 import com.eatthepath.pushy.apns.util.SimpleApnsPushNotification;
+import com.eatthepath.pushy.apns.util.TokenUtil;
+import com.eatthepath.pushy.apns.util.concurrent.PushNotificationFuture;
 import com.nike.mobileapppttpoc.model.AllChannels;
 import com.nike.mobileapppttpoc.model.Channel;
 import com.nike.mobileapppttpoc.model.ChannelUsers;
@@ -25,6 +28,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -142,16 +146,36 @@ public class PTTService {
 
     ApnsClient service = getApns();
 
+
     final ApnsPayloadBuilder payloadBuilder = new SimpleApnsPayloadBuilder();
     payloadBuilder.setAlertBody(payload.toString());
 
     final String notifPayload = payloadBuilder.build();
 
-    SimpleApnsPushNotification pushNotification = new SimpleApnsPushNotification(userbyId2.get().getDeviceToken(),
+    SimpleApnsPushNotification pushNotification = new SimpleApnsPushNotification(TokenUtil.sanitizeTokenString(
+        userbyId2.get().getDeviceToken()),
         "com.nike.pushToTalk.voip-ptt", notifPayload);
-    service.sendNotification(pushNotification);
+   PushNotificationFuture<SimpleApnsPushNotification, PushNotificationResponse<SimpleApnsPushNotification>> sendPushNotification = service.sendNotification(
+       pushNotification);
+    try {
+      PushNotificationResponse<SimpleApnsPushNotification> pushNotificationResponse = sendPushNotification.get();
+      if (pushNotificationResponse.isAccepted()) {
+        System.out.println("Push notification accepted by APNs gateway.");
+      } else {
+        System.out.println("Notification rejected by the APNs gateway: " +
+            pushNotificationResponse.getRejectionReason());
 
-  }
+        pushNotificationResponse.getTokenInvalidationTimestamp().ifPresent(timestamp -> {
+          System.out.println("\t…and the token is invalid as of " + timestamp);
+        });
+      }
+    } catch (final ExecutionException | InterruptedException e) {
+      System.err.println("Failed to send push notification.");
+      e.printStackTrace();
+    }
+
+
+ }
 
 /*  public void sendOneToOneNotification(int id1, int id2, String message) {
     Optional<User> userbyId1 = userRepository.findById(id1);

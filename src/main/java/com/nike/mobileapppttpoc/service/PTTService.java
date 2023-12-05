@@ -14,8 +14,9 @@ import com.nike.mobileapppttpoc.model.UserChannel;
 import com.nike.mobileapppttpoc.repository.ChannelRepository;
 import com.nike.mobileapppttpoc.repository.UserChannelRepository;
 import com.nike.mobileapppttpoc.repository.UserRepository;
-import com.notnoop.apns.APNS;
-import com.notnoop.apns.ApnsService;
+/*import com.notnoop.apns.APNS;
+import com.notnoop.apns.ApnsService;*/
+import io.netty.handler.ssl.OpenSsl;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -105,14 +106,14 @@ public class PTTService {
     payload.setChannelUuid(channelUuid);
     payload.setUserName(byId.get().getName());
 
-    ApnsService service = getApnsService();
+    /*ApnsService service = getApnsService();
 
     String stringPayload = APNS.newPayload().alertTitle("AudioNotif").alertBody(payload.toString()).build();
     List<UserChannel> allByChannelId = userChannelRepository.findAllByChannelId(channelUuid);
 
     for (UserChannel userChannel : allByChannelId) {
       service.push(userChannel.getPttToken(),stringPayload);
-    }
+    }*/
 
   }
 
@@ -166,6 +167,14 @@ public class PTTService {
   }*/
 
   public ApnsClient getApns() {
+    System.out.println("OpenSSL available? " + OpenSsl.isAvailable());
+    System.out.println("ALPN supported?    " + OpenSsl.isAlpnSupported());
+
+    if (OpenSsl.unavailabilityCause() != null) {
+      System.out.println("Reason for unavailability:");
+      OpenSsl.unavailabilityCause().printStackTrace(System.out);
+    }
+
     ApnsClient apnsClient;
     try {
        apnsClient = new ApnsClientBuilder()
@@ -178,9 +187,9 @@ public class PTTService {
     return apnsClient;
   }
 
-  public ApnsService getApnsService() {
+  /*public ApnsService getApnsService() {
     return APNS.newService()
         .withCert("src/main/resources/AthleteCommunication-Dev.p12","Nike1234!")
         .withProductionDestination().build();
-  }
+  }*/
 }

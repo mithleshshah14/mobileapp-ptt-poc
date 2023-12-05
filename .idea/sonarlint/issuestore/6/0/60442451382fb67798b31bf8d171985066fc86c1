@@ -1,13 +1,22 @@
 
-h	java:S112°"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‰Ø¾ËÃ1
+h	java:S112¹"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8·†áÎÃ1
 z
-java:S1488y"]Immediately return this expression instead of assigning it to the temporary variable "users".(ïÆ»8‹Ø¾ËÃ1
+java:S1488z"]Immediately return this expression instead of assigning it to the temporary variable "users".(ïÆ»8¹†áÎÃ1
+u
+java:S3655‡"RCall "userbyId1.isPresent()" or "!userbyId1.isEmpty()" before accessing the value.(²“™ºüÿÿÿÿ8Ò†áÎÃ1
+u
+java:S3655"RCall "userbyId2.isPresent()" or "!userbyId2.isEmpty()" before accessing the value.(Ö³¹’øÿÿÿÿ8Ò†áÎÃ1
 |
-java:S3655„"^Call "userChannelbyId.isPresent()" or "!userChannelbyId.isEmpty()" before accessing the value.(Í¸àª8²Ø¾ËÃ1
-u
-java:S3655†"RCall "userbyId1.isPresent()" or "!userbyId1.isEmpty()" before accessing the value.(²“™ºüÿÿÿÿ8²Ø¾ËÃ1
-u
-java:S3655"RCall "userbyId2.isPresent()" or "!userbyId2.isEmpty()" before accessing the value.(Ö³¹’øÿÿÿÿ8²Ø¾ËÃ1
+java:S3655…"^Call "userChannelbyId.isPresent()" or "!userChannelbyId.isEmpty()" before accessing the value.(Í¸àª8Ò†áÎÃ1
+X	java:S125"<This block of commented-out lines of code should be removed.(Æ°’Ï8Ò†áÎÃ1
 H
-java:S1075\"&Remove this hard-coded path-delimiter.(·ùˆ¬şÿÿÿÿ8ÅØ¾ËÃ1
-Y	java:S125•"<This block of commented-out lines of code should be removed.(·á„é8ÖØ¾ËÃ1
+java:S1075]"&Remove this hard-coded path-delimiter.(·ùˆ¬şÿÿÿÿ8Ú†áÎÃ1
+]	java:S125m"<This block of commented-out lines of code should be removed.(İÙÙèúÿÿÿÿ8Û†áÎÃ1
+Y	java:S125–"<This block of commented-out lines of code should be removed.(·á„é8à†áÎÃ1
+M	java:S106ª"+Replace this use of System.out by a logger.(ØÒª¸ıÿÿÿÿ8à†áÎÃ1
+M	java:S106«"+Replace this use of System.out by a logger.(ƒ£¹üÿÿÿÿ8á†áÎÃ1
+Z
+java:S1874«"7Remove this use of "isAlpnSupported"; it is deprecated.(ƒ£¹üÿÿÿÿ8ôÜâÎÃ1
+M	java:S106®"+Replace this use of System.out by a logger.(Å‚¦ßûÿÿÿÿ8á†áÎÃ1
+H	java:S106¯"+Replace this use of System.out by a logger.(ùÚŸä8á†áÎÃ1
+Y	java:S125¾"<This block of commented-out lines of code should be removed.(ŸôÛ8å†áÎÃ1

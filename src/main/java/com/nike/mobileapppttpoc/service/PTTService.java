@@ -169,7 +169,7 @@ public class PTTService {
     ApnsClient apnsClient;
     try {
        apnsClient = new ApnsClientBuilder()
-          .setApnsServer(ApnsClientBuilder.DEVELOPMENT_APNS_HOST)
+          .setApnsServer(ApnsClientBuilder.PRODUCTION_APNS_HOST)
           .setClientCredentials(new File("src/main/resources/AthleteCommunication-Dev.p12"), "Nike1234!")
           .build();
     } catch (IOException e) {
@@ -181,6 +181,6 @@ public class PTTService {
   public ApnsService getApnsService() {
     return APNS.newService()
         .withCert("src/main/resources/AthleteCommunication-Dev.p12","Nike1234!")
-        .withSandboxDestination().build();
+        .withProductionDestination().build();
   }
 }

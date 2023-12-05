@@ -106,14 +106,20 @@ public class PTTService {
     payload.setChannelUuid(channelUuid);
     payload.setUserName(byId.get().getName());
 
-    /*ApnsService service = getApnsService();
+    ApnsClient service = getApns();
 
-    String stringPayload = APNS.newPayload().alertTitle("AudioNotif").alertBody(payload.toString()).build();
+    final ApnsPayloadBuilder payloadBuilder = new SimpleApnsPayloadBuilder();
+    payloadBuilder.setAlertBody(payload.toString());
+
+    final String notifPayload = payloadBuilder.build();
+
     List<UserChannel> allByChannelId = userChannelRepository.findAllByChannelId(channelUuid);
 
     for (UserChannel userChannel : allByChannelId) {
-      service.push(userChannel.getPttToken(),stringPayload);
-    }*/
+      SimpleApnsPushNotification pushNotification = new SimpleApnsPushNotification(userChannel.getPttToken(),
+          "com.nike.pushToTalk.voip-ptt", notifPayload);
+      service.sendNotification(pushNotification);
+    }
 
   }
 

@@ -122,7 +122,7 @@ public class PTTService {
     return users;
   }
 
-/*  public void sendOneToOneNotification(int id1, int id2, String message) {
+ public void sendOneToOneNotification(int id1, int id2, String message) {
     Optional<User> userbyId1 = userRepository.findById(id1);
     Optional<User> userbyId2 = userRepository.findById(id2);
     Optional<UserChannel> userChannelbyId = userChannelRepository.findById(id1);
@@ -144,9 +144,9 @@ public class PTTService {
         "com.nike.pushToTalk.voip-ptt", notifPayload);
     service.sendNotification(pushNotification);
 
-  }*/
+  }
 
-  public void sendOneToOneNotification(int id1, int id2, String message) {
+/*  public void sendOneToOneNotification(int id1, int id2, String message) {
     Optional<User> userbyId1 = userRepository.findById(id1);
     Optional<User> userbyId2 = userRepository.findById(id2);
     Optional<UserChannel> userChannelbyId = userChannelRepository.findById(id1);
@@ -163,13 +163,13 @@ public class PTTService {
     String token = userbyId2.get().getDeviceToken();
     service.push(token,stringPayload);
 
-  }
+  }*/
 
   public ApnsClient getApns() {
     ApnsClient apnsClient;
     try {
        apnsClient = new ApnsClientBuilder()
-          .setApnsServer(ApnsClientBuilder.PRODUCTION_APNS_HOST)
+          .setApnsServer(ApnsClientBuilder.DEVELOPMENT_APNS_HOST)
           .setClientCredentials(new File("src/main/resources/AthleteCommunication-Dev.p12"), "Nike1234!")
           .build();
     } catch (IOException e) {

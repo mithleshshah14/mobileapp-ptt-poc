@@ -2,12 +2,12 @@
 h	java:S112×"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íìØÃ1
 {
 java:S1488„"]Immediately return this expression instead of assigning it to the temporary variable "users".(ïÆ»8ğìØÃ1
-p
-java:S3655œ"RCall "userbyId2.isPresent()" or "!userbyId2.isEmpty()" before accessing the value.(–Å½©8ÙÉ¥ØÃ1
-|
-java:S3655"^Call "userChannelbyId.isPresent()" or "!userChannelbyId.isEmpty()" before accessing the value.(Í¸àª8ØÉ¥ØÃ1
 u
 java:S3655‘"RCall "userbyId1.isPresent()" or "!userbyId1.isEmpty()" before accessing the value.(²“™ºüÿÿÿÿ8ÙÉ¥ØÃ1
+|
+java:S3655"^Call "userChannelbyId.isPresent()" or "!userChannelbyId.isEmpty()" before accessing the value.(Í¸àª8ØÉ¥ØÃ1
+p
+java:S3655œ"RCall "userbyId2.isPresent()" or "!userbyId2.isEmpty()" before accessing the value.(–Å½©8ÙÉ¥ØÃ1
 X	java:S125"<This block of commented-out lines of code should be removed.(Æ°’Ï8…íØÃ1
 H
 java:S1075a"&Remove this hard-coded path-delimiter.(·ùˆ¬şÿÿÿÿ8‘íØÃ1

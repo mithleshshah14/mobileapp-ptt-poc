@@ -160,7 +160,7 @@ public class PTTService {
     try {
       PushNotificationResponse<SimpleApnsPushNotification> pushNotificationResponse = sendPushNotification.get();
       if (pushNotificationResponse.isAccepted()) {
-        System.out.println("Push notification accepted by APNs gateway.");
+        System.out.println("Push notification accepted by APNs gateway successfully.");
       } else {
         System.out.println("Notification rejected by the APNs gateway: " +
             pushNotificationResponse.getRejectionReason());

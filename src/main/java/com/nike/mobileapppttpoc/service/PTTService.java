@@ -52,7 +52,7 @@ public class PTTService {
   }
 
   public User addUser(User user) {
-    System.out.println("Os Name:"+System.getProperty("os.name"));
+    log.info("Os Name:{}",System.getProperty("os.name"));
     return userRepository.save(user);
   }
 

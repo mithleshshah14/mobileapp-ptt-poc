@@ -154,7 +154,7 @@ public class PTTService {
 
     SimpleApnsPushNotification pushNotification = new SimpleApnsPushNotification(TokenUtil.sanitizeTokenString(
         userbyId2.get().getDeviceToken()),
-        "com.nike.pushToTalk.voip-ptt", notifPayload);
+        "com.nike.pushToTalk", notifPayload);
    PushNotificationFuture<SimpleApnsPushNotification, PushNotificationResponse<SimpleApnsPushNotification>> sendPushNotification = service.sendNotification(
        pushNotification);
     try {
